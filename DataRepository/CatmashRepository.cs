@@ -49,6 +49,13 @@ namespace Catmash.DataRepository
             else return null;
         }
 
-        
+        public async Task<bool?> DeleteAsync(string id)
+        {
+            Image image = context.Images.Find(id);
+            context.Images.Remove(image);
+            int affected = await context.SaveChangesAsync();
+            if (affected == 1) return true;
+            else return null;
+        }
     }
 }
