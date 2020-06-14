@@ -24,5 +24,12 @@ namespace Catmash.DataRepository
         {
             return Task.Run<IEnumerable<Image>>(() => context.Images);
         }
+
+        public Task<Image> RetrieveAsync(string id)
+        {
+            return Task.Run<Image>(() => context.Images
+                                                .Where(img => img.Id == id)
+                                                .SingleOrDefault());
+        }
     }
 }
