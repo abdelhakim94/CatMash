@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataRepository
+namespace Catmash.DataRepository
 {
-    public class CatmashRepository
+    public class CatmashRepository : ICatmashRepository
     {
         private CatmashEntities context;
 
