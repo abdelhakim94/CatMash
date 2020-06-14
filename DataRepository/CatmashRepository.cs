@@ -19,5 +19,10 @@ namespace Catmash.DataRepository
             if (affected == 1) return image;
             else return null;
         }
+
+        public Task<IEnumerable<Image>> RetrieveAllAsync()
+        {
+            return Task.Run<IEnumerable<Image>>(() => context.Images);
+        }
     }
 }
