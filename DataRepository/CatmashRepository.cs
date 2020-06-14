@@ -31,5 +31,14 @@ namespace Catmash.DataRepository
                                                 .Where(img => img.Id == id)
                                                 .SingleOrDefault());
         }
+
+        public Task<Image> RetrieveAsync(int index)
+        {
+            return Task.Run<Image>(() => context.Images
+                                                .Select((img, idx) => new { image = img, index = idx })
+                                                .Where(x => x.index == index)
+                                                .Select(x => x.image)
+                                                .SingleOrDefault());
+        }
     }
 }
