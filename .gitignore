@@ -1,2 +1,7 @@
 # Workspace
 Catmash.code-workspace
+
+# EntityModel
+EntityModel/obj
+EntityModel/bin
+EntityModel/.vscode
