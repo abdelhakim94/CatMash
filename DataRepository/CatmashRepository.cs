@@ -40,5 +40,15 @@ namespace Catmash.DataRepository
                                                 .Select(x => x.image)
                                                 .SingleOrDefault());
         }
+
+        public async Task<Image> UpdateAsync(string id, Image image)
+        {
+            context.Images.Update(image);
+            int affected = await context.SaveChangesAsync();
+            if (affected == 1) return image;
+            else return null;
+        }
+
+        
     }
 }
