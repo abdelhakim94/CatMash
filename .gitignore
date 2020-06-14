@@ -5,3 +5,7 @@ Catmash.code-workspace
 EntityModel/obj
 EntityModel/bin
 EntityModel/.vscode
+
+# DatabaseSeed
+DatabaseSeed/.vscode/
+DatabaseSeed/CatmashDatabase.db
