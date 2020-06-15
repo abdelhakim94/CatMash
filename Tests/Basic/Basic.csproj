@@ -5,7 +5,7 @@
     <PackageId>Abdelhakim.Catmash.Test.Utils</PackageId>
     <Version>1.0.0</Version>
     <Authors>Abdelhakim OUBRAHAM</Authors>
-    <Description>Common class library for testing</Description>
+    <Description>Basic class library for testing</Description>
   </PropertyGroup>
 
   <ItemGroup>
