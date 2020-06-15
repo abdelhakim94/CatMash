@@ -12,7 +12,7 @@ namespace Catmash.DataRepositoryTest
         public DataRepositoryTest() : base() { }
 
         [Fact]
-        public async Task CreateAsync_Image()
+        public async Task CreateAsync_ImageGiven_ShouldCreateInDatabase()
         {
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
@@ -24,9 +24,22 @@ namespace Catmash.DataRepositoryTest
             Image retrievedAfterCreation = this.context.Images.Where(img => img.Id == "anId").Single();
 
             // Assert
-            Assert.Equal(retrievedBeforeCreation, null, new ImageComparer());
+            Assert.Null(retrievedBeforeCreation);
             Assert.Equal(toCreate, returned, new ImageComparer());
             Assert.Equal(toCreate, retrievedAfterCreation, new ImageComparer());
+        }
+
+        [Fact]
+        public async Task RetrieveAllAsync_ShouldReturnAllImages()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+
+            // Act
+            var retrievedImages = await repository.RetrieveAllAsync();
+
+            // Assert
+            Assert.True(retrievedImages.SequenceEqual(context.Images, new ImageComparer()));
         }
     }
 }
