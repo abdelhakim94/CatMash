@@ -19,12 +19,14 @@ namespace Catmash.DataRepositoryTest
             Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700 };
 
             // Act
+            Image retrievedBeforeCreation = this.context.Images.Where(img => img.Id == "anId").SingleOrDefault();
             Image returned = await repository.CreateAsync(toCreate);
-            Image created = this.context.Images.Where(img => img.Id == "anId").Single();
+            Image retrievedAfterCreation = this.context.Images.Where(img => img.Id == "anId").Single();
 
             // Assert
+            Assert.Equal(retrievedBeforeCreation, null, new ImageComparer());
             Assert.Equal(toCreate, returned, new ImageComparer());
-            Assert.Equal(toCreate, created, new ImageComparer());
+            Assert.Equal(toCreate, retrievedAfterCreation, new ImageComparer());
         }
     }
 }
