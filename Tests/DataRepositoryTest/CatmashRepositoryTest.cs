@@ -19,9 +19,9 @@ namespace Catmash.DataRepositoryTest
             Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700 };
 
             // Act
-            Image retrievedBeforeCreation = this.context.Images.Where(img => img.Id == "anId").SingleOrDefault();
+            Image retrievedBeforeCreation = context.Images.Where(img => img.Id == "anId").SingleOrDefault();
             Image returned = await repository.CreateAsync(toCreate);
-            Image retrievedAfterCreation = this.context.Images.Where(img => img.Id == "anId").Single();
+            Image retrievedAfterCreation = context.Images.Where(img => img.Id == "anId").Single();
 
             // Assert
             Assert.Null(retrievedBeforeCreation);
@@ -40,6 +40,22 @@ namespace Catmash.DataRepositoryTest
 
             // Assert
             Assert.True(retrievedImages.SequenceEqual(context.Images, new ImageComparer()));
+        }
+
+        [Fact]
+        public async Task RetrieveAsync_IdGiven_ShouldReturnImage()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Image toRetrieve = new Image { Id = "anId", Url = "www.awebsite.com", Score = 325 };
+            context.Images.Add(toRetrieve);
+            await context.SaveChangesAsync();
+
+            // Act
+            Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
+
+            // Assert
+            Assert.Equal(toRetrieve, retrieved, new ImageComparer());
         }
     }
 }
