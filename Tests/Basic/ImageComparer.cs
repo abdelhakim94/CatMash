@@ -2,7 +2,7 @@ using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Catmash.DataRepositoryTest
+namespace Catmash.Tests.Basic
 {
     public class ImageComparer : IEqualityComparer<Image>
     {
