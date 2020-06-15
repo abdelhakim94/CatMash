@@ -18,3 +18,4 @@ DataRepository/.vscode/
 # Tests/DataRepositoryTest
 Tests/DataRepositoryTest/bin/
 Tests/DataRepositoryTest/obj/
+Tests/DataRepositoryTest/.vscode/
