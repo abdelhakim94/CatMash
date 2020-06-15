@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using Xunit;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
 using Catmash.EntityModel;
 
 namespace Catmash.DataRepositoryTest
@@ -12,7 +8,7 @@ namespace Catmash.DataRepositoryTest
     {
         protected readonly CatmashEntities context;
 
-        protected BaseTest()
+        public BaseTest()
         {
             var options = new DbContextOptionsBuilder<CatmashEntities>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
