@@ -8,7 +8,7 @@ namespace Catmash.DataRepository
 {
     public class CatmashRepository : ICatmashRepository
     {
-        private CatmashEntities context;
+        private readonly CatmashEntities context;
 
         public CatmashRepository(CatmashEntities context) => this.context = context;
 
