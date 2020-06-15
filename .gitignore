@@ -14,3 +14,7 @@ DatabaseSeed/CatmashDatabase.db
 DataRepository/obj/
 DataRepository/bin/
 DataRepository/.vscode/
+
+# Tests/DataRepositoryTest
+Tests/DataRepositoryTest/bin/
+Tests/DataRepositoryTest/obj/
