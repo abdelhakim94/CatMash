@@ -15,10 +15,10 @@ DataRepository/obj/
 DataRepository/bin/
 DataRepository/.vscode/
 
-# Tests/Utils
-Tests/Utils/bin/
-Tests/Utils/obj/
-Tests/Utils/.vscode/
+# Tests/Basic
+Tests/Basic/bin/
+Tests/Basic/obj/
+Tests/Basic/.vscode/
 
 # Tests/DataRepositoryTest
 Tests/DataRepositoryTest/bin/
