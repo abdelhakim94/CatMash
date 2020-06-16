@@ -11,26 +11,18 @@ namespace Catmash.Tests.Basic
         public BaseTest()
         {
             var options = new DbContextOptionsBuilder<CatmashEntities>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .UseSqlite("DataSource=:memory:", x => { })
                 .Options;
-            this.context = new CatmashEntities(options);
+            context = new CatmashEntities(options);
+            context.Database.OpenConnection();
             context.Database.EnsureCreated();
-            var images = new[]
-            {
-                new Image{Id = "qwd", Url = "foo.com", Score = 10},
-                new Image{Id = "sdfg", Url = "bar.com", Score = 35},
-                new Image{Id = "thet", Url = "baz.com", Score = 350},
-                new Image{Id = "mgk", Url = "qux.com", Score = 200},
-                new Image{Id = "aetpl4", Url = "flu.com", Score = 1010}
-            };
-            context.Images.AddRange(images);
-            context.SaveChanges();
         }
 
         public virtual void Dispose()
         {
             context.Database.EnsureDeleted();
-            this.context.Dispose();
+            context.Database.CloseConnection();
+            context.Dispose();
         }
     }
 }
