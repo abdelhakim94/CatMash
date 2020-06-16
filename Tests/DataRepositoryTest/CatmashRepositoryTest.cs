@@ -131,7 +131,7 @@ namespace Catmash.Tests.DataRepositoryTest
 
             // Act
             Image returned = await repository.UpdateAsync(toUpdate.Id, toUpdate);
-            Image updated = context.Images.Where(img => img.Id == "foo").Single();
+            Image updated = context.Images.Where(img => img.Id == toUpdate.Id).Single();
 
             // Assert
             Assert.Equal(toUpdate, returned, new ImageComparer());
