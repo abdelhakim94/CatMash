@@ -38,7 +38,7 @@ namespace Catmash.DataRepository
                                                 .OrderBy(img => img.Id)
                                                 .Skip(index)
                                                 .Take(1)
-                                                .Single());
+                                                .SingleOrDefault());
         }
 
         public async Task<Image> UpdateAsync(string id, Image image)
