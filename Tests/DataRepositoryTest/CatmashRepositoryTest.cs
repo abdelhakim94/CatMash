@@ -5,6 +5,7 @@ using Catmash.Tests.Basic;
 using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catmash.Tests.DataRepositoryTest
 {
@@ -86,6 +87,24 @@ namespace Catmash.Tests.DataRepositoryTest
 
             // Assert
             Assert.Equal(toRetrieve, retrieved, new ImageComparer());
+        }
+
+        [Fact]
+        public async Task UpdateAsync_IdAndImageGiven_ShouldUpdataInDatabase()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            Image toUpdate = context.Images.Where(img => img.Id == "foo").Single();
+            toUpdate.Url = toUpdate.Url + "Random seed";
+            toUpdate.Score = ++toUpdate.Score;
+            // Act
+            Image returned = await repository.UpdateAsync("foo", toUpdate);
+            Image updated = context.Images.Where(img => img.Id == "foo").Single();
+
+            // Assert
+            Assert.Equal(toUpdate, returned, new ImageComparer());
+            Assert.Equal(toUpdate, updated, new ImageComparer());
         }
     }
 }
