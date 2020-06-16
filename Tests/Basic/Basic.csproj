@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Abdelhakim.Catmash.Test.Utils</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Abdelhakim OUBRAHAM</Authors>
+    <Description>Basic class library for testing</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataRepository\DataRepository.csproj" />
+  </ItemGroup>
+
+</Project>

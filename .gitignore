@@ -14,3 +14,13 @@ DatabaseSeed/CatmashDatabase.db
 DataRepository/obj/
 DataRepository/bin/
 DataRepository/.vscode/
+
+# Tests/Basic
+Tests/Basic/bin/
+Tests/Basic/obj/
+Tests/Basic/.vscode/
+
+# Tests/DataRepositoryTest
+Tests/DataRepositoryTest/bin/
+Tests/DataRepositoryTest/obj/
+Tests/DataRepositoryTest/.vscode/
