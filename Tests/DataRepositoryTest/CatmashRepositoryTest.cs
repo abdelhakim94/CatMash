@@ -6,7 +6,7 @@ using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Catmash.DataRepositoryTest
+namespace Catmash.Tests.DataRepositoryTest
 {
     public class DataRepositoryTest : BaseTest
     {
@@ -68,6 +68,21 @@ namespace Catmash.DataRepositoryTest
 
             // Act
             Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
+
+            // Assert
+            Assert.Equal(toRetrieve, retrieved, new ImageComparer());
+        }
+
+        [Fact]
+        public async Task RetrieveAsync_IndexGiven_ShouldReturnImage()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            Image toRetrieve = new Image { Id = "foo", Url = "www.foo.com", Score = 452 };
+
+            // Act
+            Image retrieved = await repository.RetrieveAsync(3);
 
             // Assert
             Assert.Equal(toRetrieve, retrieved, new ImageComparer());
