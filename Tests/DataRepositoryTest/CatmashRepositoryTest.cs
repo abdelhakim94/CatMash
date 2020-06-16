@@ -98,13 +98,31 @@ namespace Catmash.Tests.DataRepositoryTest
             Image toUpdate = context.Images.Where(img => img.Id == "foo").Single();
             toUpdate.Url = toUpdate.Url + "Random seed";
             toUpdate.Score = ++toUpdate.Score;
+
             // Act
-            Image returned = await repository.UpdateAsync("foo", toUpdate);
+            Image returned = await repository.UpdateAsync(toUpdate.Id, toUpdate);
             Image updated = context.Images.Where(img => img.Id == "foo").Single();
 
             // Assert
             Assert.Equal(toUpdate, returned, new ImageComparer());
             Assert.Equal(toUpdate, updated, new ImageComparer());
+        }
+
+        [Fact]
+        public async Task DeleteAsync_IdGiven_ShouldDeleteInDatabase()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            Image toDelete = context.Images.Where(img => img.Id == "foo").Single();
+
+            // Act
+            bool? isDeleted = await repository.DeleteAsync(toDelete.Id);
+            Image afterDeletion = context.Images.Where(img => img.Id == toDelete.Id).SingleOrDefault();
+
+            // Assert
+            Assert.True(isDeleted);
+            Assert.Null(afterDeletion);
         }
     }
 }
