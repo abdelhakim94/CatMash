@@ -16,9 +16,11 @@ namespace Catmash.EntityModel
             modelBuilder.Entity<Image>()
                 .Property(image => image.Url)
                 .IsRequired();
-            modelBuilder.Entity<Image>().
-                Property(image => image.Score).
-                IsRequired();
+            modelBuilder.Entity<Image>()
+                .Property(image => image.Score)
+                .IsRequired();
+            modelBuilder.Entity<Image>()
+                .HasIndex(image => image.Id);
         }
     }
 }
