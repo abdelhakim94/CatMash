@@ -32,9 +32,9 @@ namespace Catmash.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700 };
+            Image retrievedBeforeCreation = context.Images.Where(img => img.Id == "anId").SingleOrDefault();
 
             // Act
-            Image retrievedBeforeCreation = context.Images.Where(img => img.Id == "anId").SingleOrDefault();
             Image returned = await repository.CreateAsync(toCreate);
             Image retrievedAfterCreation = context.Images.Where(img => img.Id == "anId").Single();
 
@@ -49,6 +49,7 @@ namespace Catmash.DataRepositoryTest
         {
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
+            Init();
 
             // Act
             var retrievedImages = await repository.RetrieveAllAsync();
@@ -62,9 +63,8 @@ namespace Catmash.DataRepositoryTest
         {
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
-            Image toRetrieve = new Image { Id = "anId", Url = "www.awebsite.com", Score = 325 };
-            context.Images.Add(toRetrieve);
-            await context.SaveChangesAsync();
+            Init();
+            Image toRetrieve = new Image { Id = "bar", Url = "www.bar.com", Score = 120 };
 
             // Act
             Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
