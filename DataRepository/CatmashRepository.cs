@@ -35,10 +35,9 @@ namespace Catmash.DataRepository
         public Task<Image> RetrieveAsync(int index)
         {
             return Task.Run<Image>(() => context.Images
-                                                .Select((img, idx) => new { image = img, index = idx })
-                                                .Where(x => x.index == index)
-                                                .Select(x => x.image)
-                                                .SingleOrDefault());
+                                                .Skip(index)
+                                                .Take(1)
+                                                .Single());
         }
 
         public async Task<Image> UpdateAsync(string id, Image image)
