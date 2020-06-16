@@ -75,6 +75,21 @@ namespace Catmash.Tests.DataRepositoryTest
         }
 
         [Fact]
+        public async Task RetrieveAsync_IdGiven_ShouldReturnNull()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            string id = "a random id";
+
+            // Act
+            Image retrieved = await repository.RetrieveAsync(id);
+
+            // Assert
+            Assert.Null(retrieved);
+        }
+
+        [Fact]
         public async Task RetrieveAsync_IndexGiven_ShouldReturnImage()
         {
             // Arrange
