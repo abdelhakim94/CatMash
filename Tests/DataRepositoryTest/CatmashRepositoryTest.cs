@@ -105,6 +105,21 @@ namespace Catmash.Tests.DataRepositoryTest
         }
 
         [Fact]
+        public async Task RetrieveAsync_IndexGiven_ShouldReturnNull()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            int index = int.MaxValue;
+
+            // Act
+            Image retrieved = await repository.RetrieveAsync(index);
+
+            // Assert
+            Assert.Null(retrieved);
+        }
+
+        [Fact]
         public async Task UpdateAsync_IdAndImageGiven_ShouldUpdataInDatabase()
         {
             // Arrange
