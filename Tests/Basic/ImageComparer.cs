@@ -10,7 +10,9 @@ namespace Catmash.Tests.Basic
         {
             if (x == null && y == null) return true;
             else if (x == null || y == null) return false;
-            else return ((x.Id.Equals(y.Id)) && (x.Url == y.Url) && (x.Score == y.Score));
+            else return ((x.Id.Equals(y.Id))
+                && (x.Url.Equals(y.Url))
+                && (x.Score == y.Score));
         }
         public int GetHashCode(Image obj)
         {
