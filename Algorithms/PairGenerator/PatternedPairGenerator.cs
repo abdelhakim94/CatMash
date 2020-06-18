@@ -1,11 +1,10 @@
-using System;
-
-namespace Algorithms
+namespace Catmash.Algorithms
 {
     /// <summary>
     ///     A generator of indices pairs that mimics a random behavior
     /// </summary>
-    public class PairGenerator
+
+    public class PatternedPairGenerator : IPairGeneratorStrategy
     {
         /// <summary>
         ///     For N elements, the set of possible pairs has cardinality N*(N-1).
@@ -19,8 +18,9 @@ namespace Algorithms
         ///     A number in range nbElements*(nbElements-1) that identifies a pair
         ///     of indices.
         /// <param name="nbElements"></param>
-        ///     The number elements.
-        /// <returns></returns>
+        ///     The number of elements.
+        /// <returns>A tuple representing the pair of indices calculated</returns>
+
         public (int, int) GetPair(int pairNumber, int nbElements)
         {
             int possiblePairs = nbElements * (nbElements - 1);
