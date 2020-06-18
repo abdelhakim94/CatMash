@@ -1,26 +1,10 @@
 # Workspace
 Catmash.code-workspace
 
-# EntityModel
-EntityModel/obj
-EntityModel/bin
-EntityModel/.vscode
+# Common
+**/bin/
+**/.vscode/
+**/obj/
 
 # DatabaseSeed
-DatabaseSeed/.vscode/
 DatabaseSeed/CatmashDatabase.db
-
-# DataRepository
-DataRepository/obj/
-DataRepository/bin/
-DataRepository/.vscode/
-
-# Tests/Basic
-Tests/Basic/bin/
-Tests/Basic/obj/
-Tests/Basic/.vscode/
-
-# Tests/DataRepositoryTest
-Tests/DataRepositoryTest/bin/
-Tests/DataRepositoryTest/obj/
-Tests/DataRepositoryTest/.vscode/
