@@ -22,5 +22,27 @@ namespace Catmash.Tests.Algorithms
 
             Assert.Equal(expectation, computedExpectation);
         }
+
+        [Fact]
+        public void ComputeRating_CurrentRatingAndExpectedAndActualScoresAndKFactorGiven_ShouldReturnNewRating()
+        {
+            // Arrange
+            double currentRating = 757.34;
+            double expectedScore = 0.74;
+            double actualScore = 1;
+            double kFactor = 24;
+
+            double newRating = currentRating + kFactor * (actualScore - expectedScore);
+            EloRatingCalculator ratingCalculator = new EloRatingCalculator();
+
+            // Act
+            double computedRating = ratingCalculator.ComputeRating(
+                currentRating,
+                expectedScore,
+                actualScore,
+                kFactor);
+
+            Assert.Equal(newRating, computedRating);
+        }
     }
 }
