@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Catmash.EntityModel;
 
-namespace Catmash.Tests.Basic
+namespace Catmash.Tests.DataRepositoryTest
 {
     public class BaseTest : IDisposable
     {

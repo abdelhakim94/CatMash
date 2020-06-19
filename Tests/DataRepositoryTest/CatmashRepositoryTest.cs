@@ -1,11 +1,9 @@
 using Xunit;
 using System.Threading.Tasks;
 using Catmash.DataRepository;
-using Catmash.Tests.Basic;
 using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catmash.Tests.DataRepositoryTest
 {
@@ -41,8 +39,8 @@ namespace Catmash.Tests.DataRepositoryTest
 
             // Assert
             Assert.Null(retrievedBeforeCreation);
-            Assert.Equal(toCreate, returned, new ImageComparer());
-            Assert.Equal(toCreate, retrievedAfterCreation, new ImageComparer());
+            Assert.Equal(toCreate, returned, new ImagePropertiesComparer());
+            Assert.Equal(toCreate, retrievedAfterCreation, new ImagePropertiesComparer());
         }
 
         [Fact]
@@ -56,7 +54,7 @@ namespace Catmash.Tests.DataRepositoryTest
             var retrievedImages = await repository.RetrieveAllAsync();
 
             // Assert
-            Assert.True(retrievedImages.SequenceEqual(context.Images, new ImageComparer()));
+            Assert.True(retrievedImages.SequenceEqual(context.Images, new ImagePropertiesComparer()));
         }
 
         [Fact]
@@ -71,7 +69,7 @@ namespace Catmash.Tests.DataRepositoryTest
             Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
 
             // Assert
-            Assert.Equal(toRetrieve, retrieved, new ImageComparer());
+            Assert.Equal(toRetrieve, retrieved, new ImagePropertiesComparer());
         }
 
         [Fact]
@@ -101,7 +99,7 @@ namespace Catmash.Tests.DataRepositoryTest
             Image retrieved = await repository.RetrieveAsync(3);
 
             // Assert
-            Assert.Equal(toRetrieve, retrieved, new ImageComparer());
+            Assert.Equal(toRetrieve, retrieved, new ImagePropertiesComparer());
         }
 
         [Fact]
@@ -134,8 +132,8 @@ namespace Catmash.Tests.DataRepositoryTest
             Image updated = context.Images.Where(img => img.Id == toUpdate.Id).Single();
 
             // Assert
-            Assert.Equal(toUpdate, returned, new ImageComparer());
-            Assert.Equal(toUpdate, updated, new ImageComparer());
+            Assert.Equal(toUpdate, returned, new ImagePropertiesComparer());
+            Assert.Equal(toUpdate, updated, new ImagePropertiesComparer());
         }
 
         [Fact]

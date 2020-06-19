@@ -1,10 +1,9 @@
-using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Catmash.Tests.Basic
+namespace Catmash.EntityModel
 {
-    public class ImageComparer : IEqualityComparer<Image>
+    public class ImagePropertiesComparer : IEqualityComparer<Image>
     {
         public bool Equals(Image x, Image y)
         {
