@@ -1,11 +1,9 @@
 using Xunit;
 using System.Threading.Tasks;
 using Catmash.DataRepository;
-using Catmash.Tests.Basic;
 using Catmash.EntityModel;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catmash.Tests.DataRepositoryTest
 {
