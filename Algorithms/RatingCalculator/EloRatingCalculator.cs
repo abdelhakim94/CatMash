@@ -20,9 +20,9 @@ namespace Catmash.Algorithms
         /// <returns> The expectation of first player wining againt second player
         /// </returns>
 
-        public double ComputeExpectation(double ratingA, double ratingB)
+        public decimal ComputeExpectation(decimal ratingA, decimal ratingB)
         {
-            return (1 / (1 + Math.Pow(10, (ratingB - ratingA) / 400)));
+            return (decimal)(1 / (1 + Math.Pow(10, (double)((ratingB - ratingA) / 400))));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Catmash.Algorithms
         ///     The Elo k factor
         /// <returns></returns>
 
-        public double ComputeRating(double rating, double expected, double actual, double kFactor)
+        public decimal ComputeRating(decimal rating, decimal expected, decimal actual, decimal kFactor)
         {
             return (rating + kFactor * (actual - expected));
         }
