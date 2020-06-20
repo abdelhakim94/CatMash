@@ -29,16 +29,13 @@ using (var fs = File.OpenRead(jsonImagesPath))
 
 string dbName = "CatmashDatabase.db";
 string databasePath = Path.Combine(Environment.CurrentDirectory, dbName);
-if (File.Exists(dbName))
-{
-    File.Delete(dbName);
-}
 
 var options = new DbContextOptionsBuilder<CatmashEntities>()
     .UseSqlite($"Data Source={databasePath}")
     .Options;
 using (var dbContext = new CatmashEntities(options))
 {
+    dbContext.Database.EnsureDeleted();
     dbContext.Database.EnsureCreated();
     sequence.images.AsParallel().ForAll(image => image.Score = int.Parse(Args[0]));
     dbContext.Images.AddRange(sequence.images);

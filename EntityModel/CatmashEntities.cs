@@ -18,7 +18,8 @@ namespace Catmash.EntityModel
                 .IsRequired();
             modelBuilder.Entity<Image>()
                 .Property(image => image.Score)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("decimal(10, 5)");
             modelBuilder.Entity<Image>()
                 .HasIndex(image => image.Id);
         }
