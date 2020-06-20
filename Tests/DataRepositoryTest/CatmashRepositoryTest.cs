@@ -152,5 +152,20 @@ namespace Catmash.Tests.DataRepositoryTest
             Assert.True(isDeleted);
             Assert.Null(afterDeletion);
         }
+
+        [Fact]
+        public async Task CountAsync_ShouldReturnNumberOfRows()
+        {
+            // Arrange
+            CatmashRepository repository = new CatmashRepository(context);
+            Init();
+            int numberOfRows = context.Images.Count();
+
+            // Act
+            int returnedNumberOfRows = await repository.CountAsync();
+
+            // Assert
+            Assert.Equal(numberOfRows, returnedNumberOfRows);
+        }
     }
 }
