@@ -20,6 +20,7 @@ namespace Catmash.Tests.Algorithms
             // Act
             decimal computedExpectation = ratingCalculator.ComputeExpectation(ratingA, ratingB);
 
+            // Assert
             Assert.Equal(expectation, computedExpectation);
         }
 
@@ -42,6 +43,7 @@ namespace Catmash.Tests.Algorithms
                 actualScore,
                 kFactor);
 
+            // Assert
             Assert.Equal(newRating, computedRating);
         }
     }

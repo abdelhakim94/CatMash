@@ -62,5 +62,12 @@ namespace Catmash.DataRepository
         {
             return Task.Run<int>(() => context.Images.Count());
         }
+
+        public async Task<bool?> SaveChangesAsync()
+        {
+            int affected = await context.SaveChangesAsync();
+            if (affected != 0) return true;
+            else return null;
+        }
     }
 }

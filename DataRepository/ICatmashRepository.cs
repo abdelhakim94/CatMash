@@ -13,5 +13,6 @@ namespace Catmash.DataRepository
         Task<Image> UpdateAsync(string id, Image image);
         Task<bool?> DeleteAsync(string id);
         Task<int> CountAsync();
+        Task<bool?> SaveChangesAsync();
     }
 }
