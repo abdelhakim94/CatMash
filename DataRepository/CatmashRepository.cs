@@ -57,5 +57,10 @@ namespace Catmash.DataRepository
             if (affected == 1) return true;
             else return null;
         }
+
+        public Task<int> CountAsync()
+        {
+            return Task.Run<int>(() => context.Images.Count());
+        }
     }
 }
