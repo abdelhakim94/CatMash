@@ -4,6 +4,6 @@ namespace Catmash.EntityModel
     {
         public string Id { get; set; }
         public string Url { get; set; }
-        public int Score { get; set; }
+        public double Score { get; set; }
     }
 }
