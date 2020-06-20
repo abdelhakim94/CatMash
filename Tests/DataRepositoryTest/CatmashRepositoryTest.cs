@@ -15,11 +15,11 @@ namespace Catmash.Tests.DataRepositoryTest
         {
             IEnumerable<Image> images = new Image[]
             {
-                new Image{Id = "foo", Url = "www.foo.com", Score = 452},
-                new Image{Id = "bar", Url = "www.bar.com", Score = 120},
+                new Image{Id = "foo", Url = "www.foo.com", Score = 452.865M},
+                new Image{Id = "bar", Url = "www.bar.com", Score = 120.43M},
                 new Image{Id = "baz", Url = "www.baz.com", Score = 987},
                 new Image{Id = "qux", Url = "www.qux.com", Score = 120},
-                new Image{Id = "flu", Url = "www.flu.com", Score = 98}
+                new Image{Id = "flu", Url = "www.flu.com", Score = 98.01M}
             };
             context.Images.AddRange(images);
             context.SaveChanges();
@@ -30,7 +30,7 @@ namespace Catmash.Tests.DataRepositoryTest
         {
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
-            Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700 };
+            Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700.578M };
             Image retrievedBeforeCreation = context.Images.Where(img => img.Id == "anId").SingleOrDefault();
 
             // Act
@@ -63,7 +63,7 @@ namespace Catmash.Tests.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Init();
-            Image toRetrieve = new Image { Id = "bar", Url = "www.bar.com", Score = 120 };
+            Image toRetrieve = new Image { Id = "bar", Url = "www.bar.com", Score = 120.43M };
 
             // Act
             Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
@@ -93,7 +93,7 @@ namespace Catmash.Tests.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Init();
-            Image toRetrieve = new Image { Id = "foo", Url = "www.foo.com", Score = 452 };
+            Image toRetrieve = new Image { Id = "foo", Url = "www.foo.com", Score = 452.865M };
 
             // Act
             Image retrieved = await repository.RetrieveAsync(3);
