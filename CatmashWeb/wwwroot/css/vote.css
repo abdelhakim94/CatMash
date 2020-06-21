@@ -1,0 +1,48 @@
+﻿p#first, p#second {
+    text-align: center;
+    font-weight: bold;
+    margin: 32px 0;
+}
+
+p#first {
+    font-size: 24px;
+}
+
+p#second {
+    font-size: 18px;
+}
+
+#dual {
+    text-align: center;
+}
+
+#dual .cats {
+    display: inline-block;
+    margin: 32px auto;
+    color: #8B0101;
+    font-weight: bold;
+}
+
+#dual img.photos {
+    width: 300px;
+    height: 350px;
+    border: 2px solid #CCC;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    -ms-transition-duration: .3s;
+    -o-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+#dual img.photos:hover {
+    border: 2px solid #8B0101;
+}
+
+#dual p#middle {
+    font-weight: bold;
+    vertical-align: 180px;
+    display: inline-block;
+    margin: 0 50px;
+}
