@@ -27,7 +27,7 @@ namespace Catmash.Algorithms
             pairNumber %= possiblePairs;
 
             int positionInSlice = pairNumber % (nbElements - 1);
-            int newPairNumber = ((pairNumber + (nbElements - 1) * positionInSlice + 1)) % possiblePairs;
+            int newPairNumber = ((pairNumber + (nbElements - 1) * positionInSlice + (nbElements / 2))) % possiblePairs;
 
             int firstIndex = newPairNumber / (nbElements - 1);
             int secondIndex = newPairNumber % (nbElements - 1);
