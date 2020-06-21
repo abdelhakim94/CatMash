@@ -34,6 +34,7 @@ namespace Catmash.Web
             services.AddScoped<ICatmashRepository, CatmashRepository>();
             services.AddScoped<IPairGeneratorStrategy, PatternedPairGenerator>();
             services.AddScoped<EloRatingCalculator>();
+            services.AddSingleton<Constants>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
