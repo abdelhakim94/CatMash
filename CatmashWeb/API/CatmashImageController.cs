@@ -41,7 +41,7 @@ namespace Catmash.Web.Controllers
             return new ImagePair { first = firstImage, second = secondImage };
         }
 
-        [HttpPost("score/{winner}/{loser}")]
+        [HttpPost("score/{winnerId}/{loserId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -51,6 +51,7 @@ namespace Catmash.Web.Controllers
             var loserImage = await repository.RetrieveAsync(loserId);
             if (winnerImage is null || loserImage is null)
                 return NotFound();
+
             var expectedScoreWinner = eloRatingCalculator.ComputeExpectation(
                 winnerImage.Score, loserImage.Score);
             var expectedScoreLoser = eloRatingCalculator.ComputeExpectation(
