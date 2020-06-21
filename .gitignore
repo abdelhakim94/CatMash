@@ -6,5 +6,5 @@ Catmash.code-workspace
 **/.vscode/
 **/obj/
 
-# DatabaseSeed
-DatabaseSeed/CatmashDatabase.db
+# Database
+**/CatmashDatabase.db
