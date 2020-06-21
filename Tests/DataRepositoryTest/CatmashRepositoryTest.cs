@@ -15,11 +15,11 @@ namespace Catmash.Tests.DataRepositoryTest
         {
             IEnumerable<Image> images = new Image[]
             {
-                new Image{Id = "foo", Url = "www.foo.com", Score = 452.865M},
-                new Image{Id = "bar", Url = "www.bar.com", Score = 120.43M},
-                new Image{Id = "baz", Url = "www.baz.com", Score = 987},
-                new Image{Id = "qux", Url = "www.qux.com", Score = 120},
-                new Image{Id = "flu", Url = "www.flu.com", Score = 98.01M}
+                new Image{Id = "foo", Url = "www.foo.com", Score = 452.865M, Votes = 985},
+                new Image{Id = "bar", Url = "www.bar.com", Score = 120.43M, Votes = 2435},
+                new Image{Id = "baz", Url = "www.baz.com", Score = 987, Votes = 43},
+                new Image{Id = "qux", Url = "www.qux.com", Score = 120, Votes = 786},
+                new Image{Id = "flu", Url = "www.flu.com", Score = 98.01M, Votes = 9020}
             };
             context.Images.AddRange(images);
             context.SaveChanges();
@@ -30,7 +30,7 @@ namespace Catmash.Tests.DataRepositoryTest
         {
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
-            Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700.578M };
+            Image toCreate = new Image { Id = "anId", Url = "www.awebsite.com", Score = 1700.578M, Votes = 435 };
             Image retrievedBeforeCreation = context.Images.Where(img => img.Id == "anId").SingleOrDefault();
 
             // Act
@@ -63,7 +63,7 @@ namespace Catmash.Tests.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Init();
-            Image toRetrieve = new Image { Id = "bar", Url = "www.bar.com", Score = 120.43M };
+            Image toRetrieve = new Image { Id = "bar", Url = "www.bar.com", Score = 120.43M, Votes = 2435 };
 
             // Act
             Image retrieved = await repository.RetrieveAsync(toRetrieve.Id);
@@ -78,7 +78,7 @@ namespace Catmash.Tests.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Init();
-            string id = "a random id";
+            string id = "randomIdNotExisting";
 
             // Act
             Image retrieved = await repository.RetrieveAsync(id);
@@ -93,7 +93,7 @@ namespace Catmash.Tests.DataRepositoryTest
             // Arrange
             CatmashRepository repository = new CatmashRepository(context);
             Init();
-            Image toRetrieve = new Image { Id = "foo", Url = "www.foo.com", Score = 452.865M };
+            Image toRetrieve = new Image { Id = "foo", Url = "www.foo.com", Score = 452.865M, Votes = 985 };
 
             // Act
             Image retrieved = await repository.RetrieveAsync(3);
@@ -126,6 +126,7 @@ namespace Catmash.Tests.DataRepositoryTest
             Image toUpdate = context.Images.Where(img => img.Id == "foo").Single();
             toUpdate.Url = toUpdate.Url + "Random seed";
             toUpdate.Score = ++toUpdate.Score;
+            toUpdate.Votes = ++toUpdate.Votes;
 
             // Act
             Image returned = await repository.UpdateAsync(toUpdate.Id, toUpdate);

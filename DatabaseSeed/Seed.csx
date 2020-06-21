@@ -5,9 +5,9 @@
 */
 
 #r "nuget: Microsoft.EntityFrameworkCore.SQLite, 5.0.0-preview.2.20120.8"
-#r "..\EntityModel\bin\Debug\netstandard2.0\EntityModel.dll"
+#r "..\EntityModel\bin\Release\netstandard2.0\EntityModel.dll"
 
-using System. Runtime. CompilerServices;
+using System.Runtime.CompilerServices;
 using Catmash.EntityModel;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +37,11 @@ using (var dbContext = new CatmashEntities(options))
 {
     dbContext.Database.EnsureDeleted();
     dbContext.Database.EnsureCreated();
-    sequence.images.AsParallel().ForAll(image => image.Score = int.Parse(Args[0]));
+    sequence.images.AsParallel().ForAll(image =>
+    {
+        image.Score = decimal.Parse(Args[0]);
+        image.Votes = ulong.Parse(Args[1]);
+    });
     dbContext.Images.AddRange(sequence.images);
     dbContext.SaveChanges();
 }
