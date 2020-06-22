@@ -9,6 +9,7 @@ using Catmash.DataRepository;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Catmash.Algorithms;
+using Catmash.Web.Hubs;
 
 namespace Catmash.Web
 {
@@ -16,15 +17,13 @@ namespace Catmash.Web
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddControllers();
+            services.AddSignalR();
 
             string databaseName = "CatmashDatabase.db";
             string databasePath = Path.Combine(Environment.CurrentDirectory, databaseName);
@@ -58,6 +57,7 @@ namespace Catmash.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Vote}/{id?}");
                 endpoints.MapControllers();
+                endpoints.MapHub<CatmashNotificationHub>("/votes");
             });
         }
     }
