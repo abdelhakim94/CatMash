@@ -1,18 +1,28 @@
+@model HomeVoteViewModel
 @{
     ViewData["Title"] = "Vote";
 }
+
 <head>
     <link rel="stylesheet" type="text/css" href="~/css/vote.css" asp-append-version="true"/>
-    <script src="~/js/vote.js"></script>
 </head>
 
 <p id="first">Time spent with cats is never wasted &#128516</p>
 <p id="second">Who's cuter?</p>
 
-<div id="dual">
+<div class="dual">
     <div id="firstImageCountainer" class="cats"></div>
-
-    <p id="middle">OR</p>
-
+    <p class="middle">OR</p>
     <div id="secondImageCountainer" class="cats"></div>
 </div>
+
+<a class="scoreButton" href="https://localhost:5001/home/scores">
+    <div id="totalVotes">
+        @Model.totalVotes votes 🔥
+    </div>
+</a>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/modules/signalrInit.js"></script>
+<script src="~/js/modules/utils.js"></script>
+<script src="~/js/vote.js"></script>
