@@ -59,10 +59,10 @@ namespace Catmash.Web.Controllers
 
             winnerImage.Score = eloRatingCalculator.ComputeRating(
                 winnerImage.Score, expectedScoreWinner, constants.ScoreWhenWin, constants.KFactor);
-            winnerImage.Votes++;
             loserImage.Score = eloRatingCalculator.ComputeRating(
                 loserImage.Score, expectedScoreLoser, constants.ScoreWhenLose, constants.KFactor);
-            loserImage.Votes++;
+
+            winnerImage.Votes++;
 
             bool? success = await repository.SaveChangesAsync();
             if (success is null)
