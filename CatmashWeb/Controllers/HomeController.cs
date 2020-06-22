@@ -1,20 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Catmash.DataRepository;
+using System.Threading.Tasks;
+using System.Linq;
+using Catmash.Web.Models;
 
 namespace Catmash.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
+        private readonly ICatmashRepository repository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICatmashRepository repository)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.repository = repository;
         }
 
-        public IActionResult Vote()
+        public async Task<IActionResult> Vote()
         {
-            return View();
+            var model = new HomeVoteViewModel
+            {
+                totalVotes = (await repository.RetrieveAllAsync())
+                    .Aggregate(ulong.MinValue, (nbVotes, image) => nbVotes += image.Votes)
+            };
+            return View(model);
         }
     }
 }
