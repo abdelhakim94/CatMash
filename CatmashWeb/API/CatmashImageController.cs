@@ -66,13 +66,9 @@ namespace Catmash.Web.Controllers
 
             bool? success = await repository.SaveChangesAsync();
             if (success is null)
-            {
                 return StatusCode(StatusCodes.Status500InternalServerError);
-            }
             else
-            {
                 return Ok();
-            }
         }
     }
 }
