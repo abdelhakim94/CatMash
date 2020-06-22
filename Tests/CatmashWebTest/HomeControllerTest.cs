@@ -14,10 +14,12 @@ namespace Catmash.Tests.Web
     public class HomeControllerTest : BaseTest
     {
         private ICatmashRepository repository;
+        private ILogger<HomeController> logger;
 
         public HomeControllerTest() : base()
         {
             repository = new CatmashRepository(context);
+            logger = new Logger<HomeController>(new LoggerFactory());
         }
 
         private void Init()
@@ -39,7 +41,6 @@ namespace Catmash.Tests.Web
         {
             // Arrange
             Init();
-            ILogger<HomeController> logger = new Logger<HomeController>(new LoggerFactory());
             var controller = new HomeController(logger, repository);
 
             // Act
