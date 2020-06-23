@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Catmash.Web.Models;
 using System.Collections.Generic;
 using Catmash.EntityModel;
+using System.Linq;
 
 namespace Catmash.Tests.Web
 {
@@ -50,6 +51,23 @@ namespace Catmash.Tests.Web
             var viewResult = Assert.IsType<ViewResult>(result);
             var model = Assert.IsAssignableFrom<HomeVoteViewModel>(viewResult.ViewData.Model);
             Assert.Equal((ulong)20, model.totalVotes);
+        }
+
+        [Fact]
+        public async Task Scores_ShouldReturnViewResult_WithAllImagesSortedByScore()
+        {
+            // Arrange
+            Init();
+            var controller = new HomeController(logger, repository);
+            var expectedSortedImages = (await repository.RetrieveAllAsync()).OrderByDescending(img => img.Score);
+
+            // Act
+            var result = await controller.Scores();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<HomeScoresViewModel>(viewResult.ViewData.Model);
+            Assert.Equal(expectedSortedImages, model.images);
         }
     }
 }
