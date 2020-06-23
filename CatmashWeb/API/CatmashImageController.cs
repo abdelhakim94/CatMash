@@ -32,7 +32,7 @@ namespace Catmash.Web.Controllers
 
         [HttpGet("pair")]
         [ProducesResponseType(200, Type = typeof(ImagePair))]
-        public async Task<ImagePair> GetPair()
+        public async Task<ImagePair> GetImagePair()
         {
             var pair = pairGenerator.GetPair(pairNumTracker.NextPair(),
                 await repository.CountAsync());
