@@ -1,0 +1,23 @@
+@model HomeScoresViewModel
+@{
+    ViewData["Title"] = "Scores";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/scores.css" asp-append-version="true"/>
+</head>
+
+
+<div class="imageContainer">
+    @foreach (var image in @Model.images)
+    {
+        <div class="cats">
+            <img src=@image.Url />
+            <div class="imageData">
+                Score: @decimal.Truncate(image.Score)
+                <br>
+                Votes: @image.Votes
+            </div>
+        </div>
+    }
+</div>
