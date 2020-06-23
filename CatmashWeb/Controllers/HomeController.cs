@@ -27,5 +27,14 @@ namespace Catmash.Web.Controllers
             };
             return View(model);
         }
+
+        public async Task<IActionResult> Scores()
+        {
+            var model = new HomeScoresViewModel()
+            {
+                images = (await repository.RetrieveAllAsync()).OrderByDescending(img => img.Score)
+            };
+            return View(model);
+        }
     }
 }
