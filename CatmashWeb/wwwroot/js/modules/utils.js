@@ -8,9 +8,9 @@ function createImageElement(actualImageData, actualImageId, rivalImageData) {
   imageElement.onclick = function () {
     updateScores(
       "POST",
-      `https://localhost:5001/api/score/${actualImageData.id}/${rivalImageData.id}`
+      `https://awesomecats.azurewebsites.net/api/score/${actualImageData.id}/${rivalImageData.id}`
     );
-    loadPairImage("GET", "https://localhost:5001/api/pair");
+    loadPairImage("GET", "https://awesomecats.azurewebsites.net/api/pair");
   };
   return imageElement;
 }
@@ -41,9 +41,9 @@ function insertPairImage(
       function () {
         updateScores(
           "POST",
-          `https://localhost:5001/api/score/${firstImage.dataset.id}/${secondImage.dataset.id}`
+          `https://awesomecats.azurewebsites.net/api/score/${firstImage.dataset.id}/${secondImage.dataset.id}`
         );
-        loadPairImage("GET", "https://localhost:5001/api/pair");
+        loadPairImage("GET", "https://awesomecats.azurewebsites.net/api/pair");
       }
     );
   else firstImageParent.appendChild(firstImage);
@@ -56,9 +56,9 @@ function insertPairImage(
       function () {
         updateScores(
           "POST",
-          `https://localhost:5001/api/score/${secondImage.dataset.id}/${firstImage.dataset.id}`
+          `https://awesomecats.azurewebsites.net/api/score/${secondImage.dataset.id}/${firstImage.dataset.id}`
         );
-        loadPairImage("GET", "https://localhost:5001/api/pair");
+        loadPairImage("GET", "https://awesomecats.azurewebsites.net/api/pair");
       }
     );
   else secondImageParent.appendChild(secondImage);
