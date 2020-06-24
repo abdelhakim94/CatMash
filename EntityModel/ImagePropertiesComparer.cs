@@ -14,13 +14,13 @@ namespace Catmash.EntityModel
                 && (x.Score == y.Score)
                 && (x.Votes == y.Votes));
         }
-        public int GetHashCode(Image obj)
+        public int GetHashCode(Image img)
         {
-            if (obj is null) return 0;
-            return obj.Id.Aggregate<char, int>(0, (i, c) => i + c)
-                + obj.Url.Aggregate<char, int>(0, (i, c) => i + c)
-                + (int)obj.Score
-                + (int)obj.Votes;
+            if (img is null) return 0;
+            return img.Id.Aggregate<char, int>(0, (i, c) => i + c)
+                + img.Url.Aggregate<char, int>(0, (i, c) => i + c)
+                + (int)img.Score
+                + (int)img.Votes;
         }
     }
 }
