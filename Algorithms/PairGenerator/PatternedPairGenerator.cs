@@ -10,16 +10,17 @@ namespace Catmash.Algorithms
         ///     For N elements, the set of possible pairs has cardinality N*(N-1).
         ///     Each pair is assigned a number in range [0, N*(N-1)[ and GetPair
         ///     returns the kth pair of indices. Each index is in range [0, N-1].
-        ///     The indices calculation follows a pattern that mimics randomness
+        ///     The indices calculation follow a pattern that mimics randomness
         ///     enough so as not to have indices that come up often in successive
         ///     calls.
         /// </summary>
         /// <param name="pairNumber"></param>
-        ///     A number in range nbElements*(nbElements-1) that identifies a pair
-        ///     of indices.
+        ///     A number that identifies a pair of indices in range nbElements*(nbElements-1).
         /// <param name="nbElements"></param>
         ///     The number of elements.
-        /// <returns>A tuple representing the pair of indices calculated</returns>
+        /// <returns>
+        ///     A tuple representing the pair of indices.
+        /// </returns>
 
         public (int, int) GetPair(int pairNumber, int nbElements)
         {

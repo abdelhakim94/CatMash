@@ -11,11 +11,12 @@ namespace Catmash.Algorithms
         ///     returns the kth pair of indices. Each index is in range [0, N-1].
         /// </summary>
         /// <param name="pairNumber"></param>
-        ///     A number in range nbElements*(nbElements-1) that identifies a pair
-        ///     of indices.
+        ///     A number that identifies a pair of indices in range nbElements*(nbElements-1).
         /// <param name="nbElements"></param>
         ///     The number of elements.
-        /// <returns>A tuple representing the pair of indices calculated</returns>
+        /// <returns>
+        ///     A tuple representing the pair of indices.
+        /// </returns>
 
         (int, int) GetPair(int pairNumber, int nbElements);
     }
