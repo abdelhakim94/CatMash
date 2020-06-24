@@ -1,8 +1,9 @@
-/*
-    This script automates the seeding of the CatmashDatabase.db file.
-    Args:
-        Arg1: The initiale score to assign to each image.
-*/
+/// <summary>
+///     This script automates the seeding of the CatmashDatabase.db file.
+///     Args:
+///         Arg1: The initiale score to assign to each image.
+///         Arg2: The initial number of votes to assign to each image.
+/// </summary>
 
 #r "nuget: Microsoft.EntityFrameworkCore.SQLite, 5.0.0-preview.2.20120.8"
 #r "..\EntityModel\bin\Release\netstandard2.0\EntityModel.dll"
