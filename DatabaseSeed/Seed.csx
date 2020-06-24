@@ -28,8 +28,8 @@ using (var fs = File.OpenRead(jsonImagesPath))
     }
 }
 
-string dbName = "CatmashDatabase.db";
-string databasePath = Path.Combine(Environment.CurrentDirectory, dbName);
+string databaseName = "CatmashDatabase.db";
+string databasePath = Path.Combine(Environment.CurrentDirectory, databaseName);
 
 var options = new DbContextOptionsBuilder<CatmashEntities>()
     .UseSqlite($"Data Source={databasePath}")
