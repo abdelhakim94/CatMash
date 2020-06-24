@@ -14,6 +14,8 @@ namespace Catmash.EntityModel
             modelBuilder.Entity<Image>()
                 .HasKey(image => image.Id);
             modelBuilder.Entity<Image>()
+                .HasIndex(image => image.Id);
+            modelBuilder.Entity<Image>()
                 .Property(image => image.Url)
                 .IsRequired();
             modelBuilder.Entity<Image>()
@@ -21,7 +23,8 @@ namespace Catmash.EntityModel
                 .IsRequired()
                 .HasColumnType("decimal(10, 5)");
             modelBuilder.Entity<Image>()
-                .HasIndex(image => image.Id);
+                .Property(image => image.Votes)
+                .IsRequired();
         }
     }
 }
