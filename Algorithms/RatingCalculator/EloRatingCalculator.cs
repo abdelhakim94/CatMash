@@ -17,7 +17,8 @@ namespace Catmash.Algorithms
         ///     Elo rating of first player
         /// <param name="ratingB"></param>
         ///     Elo rating of second player
-        /// <returns> The expectation of first player wining againt second player
+        /// <returns> 
+        ///     The expectation of first player wining againt second player
         /// </returns>
 
         public decimal ComputeExpectation(decimal ratingA, decimal ratingB)
@@ -26,7 +27,7 @@ namespace Catmash.Algorithms
         }
 
         /// <summary>
-        ///     Computes the new rating of a player as defined in the basic Elo
+        ///     Computes the new rating of a player as defined by the basic Elo
         ///     rating system.
         /// </summary>
         /// <param name="rating"></param>
@@ -37,7 +38,9 @@ namespace Catmash.Algorithms
         ///     The actual score of the player
         /// <param name="kFactor"></param>
         ///     The Elo k factor
-        /// <returns></returns>
+        /// <returns>
+        ///     The updated rating of the player
+        /// </returns>
 
         public decimal ComputeRating(decimal rating, decimal expected, decimal actual, decimal kFactor)
         {
