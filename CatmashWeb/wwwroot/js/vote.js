@@ -1,1 +1,1 @@
-loadPairImage("GET", "https://localhost:5001/api/pair");
+loadPairImage("GET", "https://awesomecats.azurewebsites.net/api/pair");
